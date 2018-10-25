@@ -15,4 +15,4 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::resource('projects', 'ProjectsController');
-Route::resource('posts', 'PostsController');
+// Route::resource('posts', 'PostsController');

@@ -5,5 +5,5 @@
 	<h2>{{ $project->title }}</h2>
 	<p>{{ $project->description }}</p>
 
-	<a href="{{ route('projects.index') }}" class="btn btn-outline-info">Return to list projects</a>
+	<a href="{{ route('projects.index') }}" class="btn btn-outline-primary">Return to projects</a>
 @endsection
