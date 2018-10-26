@@ -21,11 +21,5 @@
 		</div>
 	</form>
 
-	@if($errors->any())
-		<ul class="list-group">
-			@foreach($errors->all() as $error)
-				<li class="alert alert-danger">{{ $error }}</li>
-			@endforeach
-		</ul>
-	@endif
+	@include('errors')
 @endsection

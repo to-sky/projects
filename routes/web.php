@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +14,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::resource('projects', 'ProjectsController');
-// Route::resource('posts', 'PostsController');
+
+Route::post('project/{project}/task', 'ProjectTasksController@store')->name('project.tasks.store');
+Route::post('/completed-tasks/{task}', 'CompletedTasksController@store')->name('completed.tasks');
+Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy')->name('completed.tasks');

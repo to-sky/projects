@@ -8,23 +8,22 @@
 			<h1>Projects</h1>
 		</div>
 	</div>
-	
 
 	<div class="row">
-		@foreach($projects as $project)
+		@forelse($projects as $project)
 			<div class="border p-3 mb-2 w-100">
 				<h2>{{ $project->title }}</h2>
 				<p>{{ $project->description }}</p>
 
 				<div class="border-top pt-2">
-					<a href="{{ route('projects.show', ['id' => $project->id]) }}" class="btn btn-primary">Show</a>
-					<a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-secondary">Edit</a>
+					<a href="{{ route('projects.show', ['id' => $project->id]) }}" class="btn btn-sm btn-primary">Show</a>
+					<a href="{{ route('projects.edit', ['id' => $project->id]) }}" class="btn btn-sm btn-secondary">Edit</a>
 
 					<form action="{{ route('projects.destroy', ['id' => $project->id]) }}" method="POST" class="d-inline">
 						@csrf
 						@method('DELETE')
 
-						<button type="submit" class="btn btn-danger">Delete</button>
+						<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 					</form>
 				</div>
 
@@ -36,6 +35,8 @@
 					</div>
 				@endif
 			</div>
-		@endforeach
+		@empty
+			<p>Projects not found.</p>
+		@endforelse
 	</div>	
 @endsection
