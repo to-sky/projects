@@ -8,6 +8,11 @@ use App\Http\Requests\ProjectsRequest;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +43,9 @@ class ProjectsController extends Controller
      */
     public function store(ProjectsRequest $request)
     {
-        Project::create($request->all());
+        $attributes = $request->all() + ['owner_id' => auth()->id()];
+
+        Project::create($attributes);
 
         return redirect()->route('projects.index');
     }
@@ -74,7 +81,9 @@ class ProjectsController extends Controller
      */
     public function update(ProjectsRequest $request, Project $project)
     {
-        $project->update($request->all());
+        $attributes = $request->all() + ['owner_id' => auth()->id()];
+
+        $project->update($attributes);
 
         return redirect()->route('projects.index');
     }
